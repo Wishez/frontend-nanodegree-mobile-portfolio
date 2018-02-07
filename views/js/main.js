@@ -1,3 +1,4 @@
+import pizzaImg from './../images/pizza.png';
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
@@ -372,19 +373,19 @@ var pizzaElementGenerator = function(i) {
   pizzaImage = document.createElement("img");
   pizzaDescriptionContainer = document.createElement("div");
 
+  pizzaImageContainer.classList.add("pizzaImageContainer");
   pizzaContainer.classList.add("randomPizzaContainer");
-  pizzaContainer.style.width = "33.33%";
-  pizzaContainer.style.height = "325px";
-  pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
-  pizzaImageContainer.style.width="35%";
-
-  pizzaImage.src = "images/pizza.png";
+  pizzaDescriptionContainer.classList.add('pizzaDescriptionContainer')
   pizzaImage.classList.add("img-responsive");
+  
+
+  pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
+  pizzaImage.src = pizzaImg;
+
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
 
-  pizzaDescriptionContainer.style.width="65%";
 
   pizzaName = document.createElement("h4");
   pizzaName.innerHTML = randomName();
@@ -397,26 +398,32 @@ var pizzaElementGenerator = function(i) {
 
   return pizzaContainer;
 };
-
+let lastSize = 0;
 // resizePizzas(size) is called when the slider in the "Our Pizzas" section of the website moves.
-var resizePizzas = function(size) {
+window.resizePizzas = function(size) {
   window.performance.mark("mark_start_resize");   // User Timing API function
 
   // Changes the value for the size of the pizza above the slider
   function changeSliderLabel(size) {
+    
+    let newSize = '';
+
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
-        return;
+        newSize = "Small";
+        break;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
-        return;
+        newSize = "Medium";
+        break;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
-        return;
+        newSize = "Large";
+        break;
       default:
         console.log("bug in changeSliderLabel");
     }
+
+    document.querySelector("#pizzaSize").innerHTML = newSize;
+    return;
   }
 
   changeSliderLabel(size);
@@ -449,10 +456,13 @@ var resizePizzas = function(size) {
 
   // Iterates through pizza elements on the page and changes their widths
   function changePizzaSizes(size) {
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
-      var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = newwidth;
+    const pizzaContainers = document.querySelectorAll(".randomPizzaContainer")
+    var dx = determineDx(pizzaContainers[0], size);
+    var newwidth = (pizzaContainers[0].offsetWidth + dx) + 'px';
+
+    for (const element of pizzaContainers) {
+      element.style.width = newwidth;
+      
     }
   }
 
@@ -506,7 +516,7 @@ function updatePositions() {
     // document.body.scrollTop is no longer supported in Chrome.
     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
     var phase = Math.sin((scrollTop / 1250) + (i % 5));
-    items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
+    items[i].style.transform = `translateX(${items[i].basicLeft + 100 * phase}px)`;
   }
 
   // User Timing API to the rescue again. Seriously, it's worth learning.
@@ -529,9 +539,7 @@ document.addEventListener('DOMContentLoaded', function() {
   for (var i = 0; i < 200; i++) {
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
-    elem.style.height = "100px";
-    elem.style.width = "73.333px";
+    elem.src = pizzaImg;
     elem.basicLeft = (i % cols) * s;
     elem.style.top = (Math.floor(i / cols) * s) + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);
