@@ -1,0 +1,19 @@
+{
+  "name": "optimize-project",
+  "version": "1.0.0",
+  "description": "The optimize version of Cameron's portfolio.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wishez/frontend-nanodegree-mobile-portfolio.git"
+  },
+  "author": "Filipp Zhuravlev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Wishez/frontend-nanodegree-mobile-portfolio/issues"
+  },
+  "homepage": "https://github.com/Wishez/frontend-nanodegree-mobile-portfolio#readme"
+}
