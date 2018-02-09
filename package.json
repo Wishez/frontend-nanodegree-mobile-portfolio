@@ -22,7 +22,5 @@
     "url": "https://github.com/Wishez/frontend-nanodegree-mobile-portfolio/issues"
   },
   "homepage": "https://github.com/Wishez/frontend-nanodegree-mobile-portfolio#readme",
-  "devDependencies": {
-    "parcel-plugin-imagemin": "^1.0.2"
-  }
+  "devDependencies": {}
 }

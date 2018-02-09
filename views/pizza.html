@@ -1,8 +1,88 @@
 <!DOCTYPE HTML>
-<html>
+<html lang="ru">
 <head>
-  <link rel="stylesheet" href="css/style.css">
-  <link onload="if (media!=='all')media='all';" rel="stylesheet" href="css/bootstrap-grid.css">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=" The optimized page of the Cameron's portfolio. ">
+    <meta name="author" content=" Filipp Zhuravlev ">
+    <title>Optimized Cameron's Pizzaria by Filipp Zhuravlev</title>
+    <link rel="dns-prefetch" href="//fonts.googleapis.com"/>
+    <link rel="prefetch" href="//fonts.googleapis.com/css?family=Open+Sans:400,700"/>
+    <link rel="dns-prefetch" href="//wishez.gihub.com"/>
+    <link rel="prefetch" href="./css/bootstrap-grid.css" as="style" />
+    <link rel="prefetch" href="./js/main.js" as="script" />
+    <link rel="prerender" href="./../index.html"/>
+    <link rel="prerender" href="./pizza.html"/>
+    <link rel="prerender" href="./../project-2048.html"/>
+    <link rel="prerender" href="./../project-webperf.html"/>
+    <link rel="prerender" href="./../project-mobile.html"/>
+
+  <link onload="if (media!=='all')media='all';" media="none" rel="stylesheet" href="css/bootstrap-grid.css">
+
+  <style>
+      * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Trebuchet MS", Helvetica, sans-serif;
+        background: black;
+      }
+
+      input {
+        background: grey;
+        font-size: 18px;
+      }
+
+      form {
+        display: inline-block;
+      }
+
+      .centered {
+        text-align: center;
+      }
+
+      #pizzaSize {
+        font-weight: 800;
+      }
+
+      .mover {
+        position: fixed;
+        width: 256px;
+        z-index: -1;
+        will-change: transform;
+      }
+
+      .randomPizzaContainer {
+        float: left;
+        display: flex;
+        width: 33.33%;
+        height: 325px;
+      }
+      .pizzaImageContainer {
+        width: 35%;
+      }
+      .pizzaDescriptionContainer {
+        width: 65%;
+      }
+      .randomPizzaContainer:after {
+        content: "";
+        display: table;
+        clear:both;
+      }
+
+       .container {
+        background-color: rgba(240, 60, 60, 0.8);
+      }
+      .mover {
+        height: 100px;
+        width: 73.333px;
+      }
+
+     
+   </style>
 </head>
 
 <body>
